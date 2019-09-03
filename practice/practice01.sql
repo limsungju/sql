@@ -68,4 +68,4 @@ where title = 'Engineer' and to_date >= '9998-13-31';
 select emp_no, to_date
   from titles 
 where emp_no = '13250'
-order by emp_no and emp_no asc;
+order by to_date asc;
