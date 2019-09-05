@@ -20,8 +20,7 @@ order by concat(e.first_name, ' ', e.last_name) asc;
     from employees e, dept_emp de, departments d
    where e.emp_no = de.emp_no
      and de.dept_no = d.dept_no
-     and de.to_date = '9999-01-01'
-group by e.emp_no;
+     and de.to_date = '9999-01-01';
 
 -- 문제4.
 -- 전체 사원의 사번, 이름, 연봉, 직책, 부서를 모두 이름 순서로 출력합니다.
@@ -32,9 +31,8 @@ group by e.emp_no;
      and e.emp_no = de.emp_no
      and de.dept_no = d.dept_no
      and s.to_date = '9999-01-01'
-     and de.to_date = '9999-01-01'
-     and t.to_date = '9999-01-01'
-group by e.emp_no
+     and de.to_date = s.to_date
+     and t.to_date = s.to_date
 order by concat(e.first_name, ' ', e.last_name) asc;
 
 -- 문제5.
@@ -45,8 +43,7 @@ order by concat(e.first_name, ' ', e.last_name) asc;
     from employees e, titles t
    where e.emp_no = t.emp_no
      and t.to_date != '9999-01-01'
-     and t.title = 'Technique Leader'
-group by e.emp_no;
+     and t.title = 'Technique Leader';
 
 -- 문제6.
 -- 직원 이름(last_name) 중에서 S(대문자)로 시작하는 직원들의 이름, 부서명,직책을 조회하세요.
@@ -57,8 +54,7 @@ group by e.emp_no;
      and de.dept_no = d.dept_no
      and de.to_date = '9999-01-01'
      and t.to_date = de.to_date
-     and e.last_name like 'S%'
-group by e.emp_no;
+     and e.last_name like 'S%';
 
 -- 문제7.
 -- 현재, 직책이 Engineer인 사원 중에서 현재 급여가 40000 이상인 사원을 급여가 큰 순서대로 출력하세요.
@@ -70,7 +66,6 @@ select concat(e.first_name, ' ', e.last_name) as '이름', s.salary as '급여'
    and s.to_date = '9999-01-01'
    and t.to_date = s.to_date
    and salary >= '40000'
-group by e.emp_no
 order by s.salary desc;
 
 -- 문제8.
